@@ -7,3 +7,12 @@ c64maze.o
 .project
 .settings
 *~
+*.exe
+*.obj
+*.log
+*.tlog
+.vs
+*.ilk
+*.pdb
+*.txt
+*.idb

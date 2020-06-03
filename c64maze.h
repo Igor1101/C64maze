@@ -8,6 +8,12 @@
 #define TRUE  0xFF
 #define FALSE 0x00
 
+#if( defined (_WIN32) || defined(_WIN64))
+#define SIZEX (200 * 5)
+#define SIZEY (199 * 5)
+#define STEPSIZEX (15 * 5)
+#define STEPSIZEY (15 * 5)
+#else
 #if (P_CURRENT == P_C64)
 #define SIZEX (200)
 #define SIZEY (199)
@@ -24,7 +30,7 @@
 #define STEPSIZEX  5
 #define STEPSIZEY  5
 #endif
-
+#endif
 
 #define labyrinthSizeX 40
 #define labyrinthSizeY 17

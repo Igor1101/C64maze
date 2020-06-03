@@ -7,7 +7,11 @@
 #define EXPAND3(x, y, z) EXPAND2(x, y)z
 
 #undef INCLUDE_NAME
+#if defined(_WIN32) || defined(_WIN64)
+#define INCLUDE_NAME "ports/WIN.h"
+#else
 #define INCLUDE_NAME <ports/EXPAND2(PLATFORM_MAZE,.h)>
+#endif
 #include INCLUDE_NAME
 
 char labyrinth[] =  "****************************************"
@@ -34,7 +38,7 @@ char positionx;
 char positiony;
 unsigned char style=0x1;
 
-#if (P_CURRENT== P_C64)
+#if (P_CURRENT== P_C64 && !defined (_WIN32))
 #define LABYRINTHSZX_DYN	SIZEX
 #define LABYRINTHSZY_DYN	SIZEY
 #define LABSTEPSZX_DYN	STEPSIZEX
@@ -484,7 +488,7 @@ void show_maze()
 {
     unsigned char x;
     unsigned char y;
-    unsigned int by;
+    unsigned int by = 0;
     const char *pt;
 
     char message[]="elapsed:      s";
